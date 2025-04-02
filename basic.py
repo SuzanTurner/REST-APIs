@@ -19,11 +19,11 @@ def create_item(item:Item):
     items.append(item)
     return items
 
-@app.get('/items/{item_limit}')
+@app.get('/items/{item_limit}', response_model=list[Item])
 def get_limit(item_limit:int):
     return items[:item_limit]
 
-@app.get('/items/{items_id}')
+@app.get('/items/{items_id}', response_model= Item)
 def get_item(items_id:int) -> Item:
     if items_id < len(items):
         item =  items[items_id]
